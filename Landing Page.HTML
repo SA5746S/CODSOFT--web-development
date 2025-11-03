@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>DreamTech - Landing Page</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: Poppins, Arial, sans-serif;
+            color: #222;
+            background: #fbfbfe;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: #0078ff;
+            color: #fff;
+            padding: 18px 0;
+        }
+        
+        nav {
+            width: 90%;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        nav h1 {
+            font-size: 1.4rem;
+            letter-spacing: 0.5px;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 18px;
+        }
+        
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .hero {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            justify-content: space-between;
+            padding: 70px 10%;
+            background: linear-gradient(90deg, #eef4ff, #d6e8ff);
+        }
+        
+        .hero-text {
+            max-width: 52%;
+        }
+        
+        .hero-text h2 {
+            color: #0078ff;
+            font-size: 2.2rem;
+            margin-bottom: 18px;
+        }
+        
+        .hero-text p {
+            margin-bottom: 24px;
+            font-size: 1.05rem;
+            color: #344;
+        }
+        /* CTA button style */
+        
+        .btn {
+            display: inline-block;
+            background: #0078ff;
+            color: #fff;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform .15s ease, box-shadow .15s;
+        }
+        
+        .btn:focus {
+            outline: 3px solid rgba(0, 120, 255, 0.25);
+            outline-offset: 2px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 18px rgba(0, 120, 255, 0.12);
+        }
+        
+        .hero img {
+            width: 40%;
+            border-radius: 10px;
+            max-width: 420px;
+        }
+        
+        .features {
+            padding: 60px 10%;
+            text-align: center;
+        }
+        
+        .features h2 {
+            color: #0078ff;
+            margin-bottom: 18px;
+        }
+        
+        .feature-boxes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+            margin-top: 20px;
+        }
+        
+        .box {
+            background: #fff;
+            padding: 22px;
+            border-radius: 10px;
+            box-shadow: 0 6px 14px rgba(20, 20, 50, 0.06);
+        }
+        /* Contact */
+        
+        .contact {
+            background: #eef4ff;
+            padding: 60px 10%;
+            text-align: center;
+        }
+        
+        .contact h2 {
+            color: #0078ff;
+            margin-bottom: 14px;
+        }
+        
+        .contact p {
+            margin-bottom: 18px;
+        }
+        
+        footer {
+            background: #222;
+            color: #fff;
+            text-align: center;
+            padding: 14px 0;
+        }
+        /* Responsive */
+        
+        @media (max-width:768px) {
+            .hero {
+                flex-direction: column;
+                padding: 48px 6%;
+                text-align: center;
+            }
+            .hero-text {
+                max-width: 100%;
+            }
+            .hero img {
+                width: 90%;
+            }
+            nav ul {
+                display: none;
+            }
+            /* simple responsive nav hide for brevity */
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <h1>DreamTech</h1>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" aria-labelledby="hero-heading">
+        <div class="hero-text">
+            <h2 id="hero-heading">Build Your Dream Website with Us</h2>
+            <p>We design and develop stunning, responsive websites that help your brand shine online.</p>
+
+            <!-- WORKING CTA: button with JS listener (smooth-scroll) -->
+            <button id="cta" class="btn" type="button">Get Started</button>
+            <!-- Alternative (no JS): <a href="#contact" class="btn">Get Started</a> -->
+        </div>
+
+        <img src="landing-image.jpg" alt="Illustration of website design" />
+    </section>
+
+    <section id="features" class="features" aria-labelledby="features-heading">
+        <h2 id="features-heading">Our Features</h2>
+        <div class="feature-boxes">
+            <div class="box">
+                <h3>Creative Design</h3>
+                <p>User-friendly and attractive designs that convert.</p>
+            </div>
+            <div class="box">
+                <h3>Responsive Layout</h3>
+                <p>Looks great on phones, tablets & desktops.</p>
+            </div>
+            <div class="box">
+                <h3>Fast Performance</h3>
+                <p>Optimized code for faster load times.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION (target of the button) -->
+    <section id="contact" class="contact" aria-labelledby="contact-heading">
+        <h2 id="contact-heading">Contact Us</h2>
+        <p>Ready to start? Send us a message or email and we'll get back to you.</p>
+        <a class="btn" href="mailto:info@dreamtech.com">📧 Email Us</a>
+    </section>
+
+    <footer>
+        <p>© 2025 DreamTech. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Smooth-scroll behavior for the CTA button
+        document.getElementById('cta').addEventListener('click', function() {
+            const target = document.getElementById('contact');
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+                // Optionally set focus for accessibility:
+                target.setAttribute('tabindex', '-1');
+                target.focus({
+                    preventScroll: true
+                });
+            }
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator with Input + Result</title>
+
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        .calculator {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            width: 340px;
+        }
+        
+        .display {
+            background: #e9ecef;
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .expression {
+            font-size: 1em;
+            color: #6c757d;
+            text-align: right;
+        }
+        
+        .result {
+            font-size: 1.5em;
+            font-weight: bold;
+            text-align: right;
+        }
+        
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+        
+        button {
+            padding: 15px;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 10px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background-color: #0056b3;
+        }
+        
+        .equal {
+            grid-column: span 2;
+            background-color: #28a745;
+        }
+        
+        .clear {
+            background-color: #dc3545;
+        }
+        
+        .delete {
+            background-color: #ffc107;
+            color: black;
+        }
+        
+        .function {
+            background-color: #6f42c1;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="calculator">
+        <div class="display">
+            <div class="expression" id="expressionDisplay"></div>
+            <div class="result" id="resultDisplay">0</div>
+        </div>
+        <div class="buttons">
+            <button onclick="appendValue('7')">7</button>
+            <button onclick="appendValue('8')">8</button>
+            <button onclick="appendValue('9')">9</button>
+            <button onclick="appendValue('/')">/</button>
+
+            <button onclick="appendValue('4')">4</button>
+            <button onclick="appendValue('5')">5</button>
+            <button onclick="appendValue('6')">6</button>
+            <button onclick="appendValue('*')">*</button>
+
+            <button onclick="appendValue('1')">1</button>
+            <button onclick="appendValue('2')">2</button>
+            <button onclick="appendValue('3')">3</button>
+            <button onclick="appendValue('-')">-</button>
+
+            <button onclick="appendValue('0')">0</button>
+            <button onclick="appendValue('.')">.</button>
+            <button class="equal" onclick="calculate()">=</button>
+            <button onclick="appendValue('+')">+</button>
+
+            <button class="clear" onclick="clearAll()">AC</button>
+            <button class="delete" onclick="deleteLast()">DEL</button>
+            <button class="function" onclick="applyFunction('sin')">sin</button>
+            <button class="function" onclick="applyFunction('cos')">cos</button>
+
+            <button class="function" onclick="applyFunction('tan')">tan</button>
+            <button onclick="appendValue('(')">(</button>
+            <button onclick="appendValue(')')">)</button>
+            <button onclick="appendValue('Math.PI')">π</button>
+        </div>
+    </div>
+
+    <script>
+        const exprDisplay = document.getElementById("expressionDisplay");
+        const resultDisplay = document.getElementById("resultDisplay");
+
+        let expression = '';
+
+        function appendValue(val) {
+            expression += val;
+            exprDisplay.textContent = expression;
+        }
+
+        function clearAll() {
+            expression = '';
+            exprDisplay.textContent = '';
+            resultDisplay.textContent = '0';
+        }
+
+        function deleteLast() {
+            expression = expression.slice(0, -1);
+            exprDisplay.textContent = expression;
+        }
+
+        function applyFunction(func) {
+            try {
+                const value = eval(expression);
+                const radians = value * Math.PI / 180; // degrees to radians
+                let result;
+                if (func === 'sin') result = Math.sin(radians);
+                if (func === 'cos') result = Math.cos(radians);
+                if (func === 'tan') result = Math.tan(radians);
+                resultDisplay.textContent = result.toFixed(8);
+                exprDisplay.textContent = `${func}(${value})`;
+                expression = result.toString();
+            } catch {
+                resultDisplay.textContent = "Error";
+            }
+        }
+
+        function calculate() {
+            try {
+                const result = eval(expression);
+                resultDisplay.textContent = result;
+                exprDisplay.textContent = expression;
+                expression = result.toString(); // keep the result for next input
+            } catch {
+                resultDisplay.textContent = "Error";
+            }
+        }
+    </script>
+
+</body>
+
+</html>
